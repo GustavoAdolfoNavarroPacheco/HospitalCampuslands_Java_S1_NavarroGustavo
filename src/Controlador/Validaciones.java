@@ -3,23 +3,21 @@ package Controlador;
 import java.util.Scanner;
 
 public class Validaciones {
-    
-    public static int validacion(int valorminimo, int valormaximo, String mensaje) {
-        boolean validar = true;
-        int opcion = 0;
-        do {
+
+    public static int validacion(int min, int max, String mensaje) {
+        int opcion;
+        while (true) {
             try {
                 System.out.println(mensaje);
                 opcion = new Scanner(System.in).nextInt();
-                while (opcion < valorminimo || op > valormaximo) {
-                    System.out.println("Opcion no valida, intente nuevamente. ");
-                    opcion = new Scanner(System.in).nextInt();
+                if (opcion >= min && opcion <= max) {
+                    return opcion;
+                } else {
+                    System.out.println("Opcion invalida. Intente nuevamente!");
                 }
-                validar = true;
             } catch (Exception e) {
-                System.out.println("Error, solo se admiten numeros. ");
+                System.out.println("Error: solo se aceptan numeros!");
             }
-        } while (validar == true);
-        return opcion;
+        }
     }
 }
